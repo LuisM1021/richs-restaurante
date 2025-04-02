@@ -1,0 +1,56 @@
+@use '../../scss/variables/index' as *;
+
+.header{
+    width: 90%;
+    height: 100%;
+    margin: 0 auto;
+    position: relative;
+    .header__background{
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        .background__box1{
+            width: 100%;
+            height: 40%;
+            background: $dark-blue;
+        }
+        .background__box2{
+            width: 100%;
+            height: 60%;
+            background: $dark-blue;
+            border-radius: 0 0 250px 250px;
+        }
+    }
+    .header__nav{
+        width: 100%;
+        height: 100%;
+        padding-top: 8px;
+        .nav__list{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            .list__item{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+                cursor: pointer;
+                p{
+                    font-size: $font-xl;
+                    color: $white;
+                }
+                img{
+                    width: 124px;
+                    height: 124px;
+                }
+            }
+            .list__logo-item{
+                align-self: flex-start;
+                cursor: default;
+            }
+        }
+    }
+}

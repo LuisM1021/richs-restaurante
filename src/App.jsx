@@ -1,12 +1,12 @@
-import './App.css'
-import Dishes from './components/Dishes'
+import './App.scss'
+import Dishes from './pages/Dishes'
 
 function App() {
 
   return (
-    <>
+    <div className="app">
       <Dishes />
-    </>
+    </div>
   )
 }
 

@@ -1,0 +1,31 @@
+@use '../../scss/variables/index' as *;
+
+.logo__container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.row{
+        flex-direction: row;
+    }
+    &.column{
+        flex-direction: column;
+    }
+
+    img{
+        width: 100px;
+        height: 100px;
+    }
+    p{
+        font-size: $font-md;
+        font-style: italic;
+        font-weight: bold;
+
+        &.green{
+            color: $green-1;
+        }
+        &.blue{
+            color: $dark-blue;
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 
-export default function Dishes(){
+export default function Delete(){
 
     const [dishes, setDishes] = useState([]);
 

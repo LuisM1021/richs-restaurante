@@ -1,0 +1,9 @@
+@use './variables/index' as *;
+
+li{
+    list-style: none;
+}
+p{
+    font-size: $font-md;
+    color: $black;
+}
