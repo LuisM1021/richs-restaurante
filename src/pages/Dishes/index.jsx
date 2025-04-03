@@ -49,8 +49,8 @@ export default function Dishes(){
                 </div>
 
                 <div className="dishes-list">
-                    {filteredDishes.map((dish, i)=>(
-                        <DishCard key={i} dish={dish}/>
+                    {filteredDishes.map((dish)=>(
+                        <DishCard key={dish.id} dish={dish}/>
                     ))}
                 </div>
             </div>

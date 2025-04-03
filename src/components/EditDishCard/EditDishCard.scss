@@ -1,0 +1,97 @@
+@use '../../scss/variables/index' as *;
+
+.edit-dish__card{
+    width: 100%;
+    height: 100%;
+    background: $green-2;
+    border-radius: 4px;
+    padding: 12px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    .edit__name{
+        height: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        p{
+            font-weight: bold;
+        }
+        img{
+            width: 28px;
+            height: 28px;
+        }
+    }
+    .edit__description{
+        max-height: 30%;
+        display: flex;
+        gap: 4px;
+        img{
+            width: 28px;
+            height: 28px;
+            align-self: flex-start;
+        }
+        p{
+            padding-top: 6px;
+        }
+    }
+    .edit__category{
+        height: 10%;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        .category__label, p{
+            font-weight: bold;
+        }
+    }
+    .edit__price{
+        height: 10%;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        .price__label{
+            font-weight: bold;
+            padding: 0;
+        }
+        p{
+            padding-left: 24px;
+        }
+        img{
+            width: 28px;
+            height: 28px;
+        }
+    }
+    .edit__file{
+        height: 20%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        .file__label{
+            font-weight: bold;
+            font-size: $font-sm;
+        }
+        input{
+            
+        }
+    }
+    .edit__is-active{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        button{
+            padding: 8px 32px;
+            color: $white;
+            background: $light-blue;
+            border-radius: 4px;
+            border: none;
+            font-weight: bold;
+            cursor: pointer;
+            &.active{
+                background: #E27F7F;
+            }
+        }
+    }
+}

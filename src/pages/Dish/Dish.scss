@@ -1,0 +1,44 @@
+@use '../../scss/variables/index' as *;
+
+.dish{
+    width: 100%;
+    max-width: 775px;
+    height: 300px;
+    margin: 0 auto;
+    // background: green;
+    display: grid;
+    grid-template-columns: calc(35% - 25px) calc(65% - 25px);
+    gap: 50px;
+    .dish__card{
+        width: 100%;
+        height: 100%;
+        .card__name{
+            height: 15%;
+            font-weight: bold;
+            text-align: center;
+            font-size: $font-lg;
+        }
+        img{
+            width: 100%;
+            height: 75%;
+        }
+        .card__price{
+            height: 10%;
+            font-weight: bold;
+            font-size: $font-lg;
+            text-align: center;
+            color: $dark-blue;
+        }
+
+    }
+}
+
+
+// <div className="dish">
+//                 <div className="dish__card">
+//                     <p className="card__name">{dish?.name}</p>
+//                     <img src={dish?.imageUrl ? dish?.imageUrl : fakeImg} alt={dish?.name} />
+//                     <p className="card__price">{dish?.price}</p>
+//                 </div>
+//                 <EditDishCard dish={dish}/>
+//             </div>
