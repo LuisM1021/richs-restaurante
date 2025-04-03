@@ -1,0 +1,50 @@
+@use '../../scss/variables/index' as *;
+
+.dish-card{
+    width: 100%;
+    height: 100%;
+    .dish-card__img-container{
+        width: 100%;
+        height: 65%;
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        position: relative;
+        p{
+            position: absolute;
+            width: 80%;
+            text-align: center;
+            background: $blue;
+            color: $white;
+            border-radius: 4px;
+            padding: 2px 0;
+        }
+        img{
+            width: 90%;
+            height: 90%;
+        }
+    }
+    .dish-card__dish-name{
+        height: 22%;
+        font-weight: bold;
+        font-size: $font-xl;
+        text-align: center;
+    }
+    .dish-card__dish-price{
+        height: 13%;
+        font-weight: bold;
+        font-size: $font-xl;
+        text-align: center;
+        color: $dark-blue;
+    }
+}
+
+
+// <div className="dish-card">
+//             <figure className='dish-card__img-container'>
+//                 <p>{dish.category}</p>
+//                 <img src={fakeImg} alt={dish.name} />
+//             </figure>
+//             <p className='dish-card__dish-name'>{dish.name}</p>
+//             <p className="dish-card__dish-price">{dish.price}</p>
+//         </div>
