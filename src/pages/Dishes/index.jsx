@@ -4,9 +4,11 @@ import Layout from '../../components/Layout';
 import { useEffect, useState } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import AbcFilter from '../../components/AbcFilter/AbcFilter';
+import useFetchData from '../../hooks/useFetchData';
 
 export default function Dishes(){
     
+    const { data: fetchedDishes, error, loading } = useFetchData('/dishes')
     const [dishes, setDishes] = useState([]);
     const [search, setSearch] = useState('');
     const [abcFilter, setAbcFilter] = useState('ALL');
@@ -22,22 +24,10 @@ export default function Dishes(){
 
     useEffect(()=>{
     
-            let ignore = false;
-    
-            console.log("Consultando API")
-            fetch("http://localhost:3000/api/dishes")
-            .then((response) => response.json())
-            .then((data) => {
-                if(!ignore){
-                    setDishes(data);
-                }
-            }).catch((error) => console.log('Error: ', error));
-    
-            return () => {
-                ignore = true;
-            }
-    
-        },[])
+        if(fetchedDishes){
+            setDishes(fetchedDishes)
+        }    
+    },[fetchedDishes])
 
 
     return(

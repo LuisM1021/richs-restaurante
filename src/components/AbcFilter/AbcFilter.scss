@@ -7,4 +7,11 @@
     border: none;
     background: $yellow;
     outline: none;
+    &::-webkit-scrollbar{
+        width: 8px;
+    }
+    &::-webkit-scrollbar-thumb{
+        background: $purple;
+        border-radius: 4px;
+    }
 }
