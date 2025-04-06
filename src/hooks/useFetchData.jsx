@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 
+const apiUrl = import.meta.env.VITE_API_ENDPOINT
+
 export default function useFetchData(endpoint){
 
     const [loading, setLoading] = useState(true)
@@ -17,7 +19,7 @@ export default function useFetchData(endpoint){
         const fetchData = async () => {
         
             try{
-                const res = await fetch(`http://192.168.1.27:3000/api${endpoint}`)
+                const res = await fetch(`${apiUrl}${endpoint}`)
                 if(!res.ok){
                     throw new Error(await res.json())
                 }

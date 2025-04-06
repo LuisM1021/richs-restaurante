@@ -1,5 +1,7 @@
 import { useState } from "react"
 
+const apiUrl = import.meta.env.VITE_API_ENDPOINT
+
 export default function usePatch(){
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
@@ -8,7 +10,7 @@ export default function usePatch(){
         setError(false)
         setLoading(true)
         try{
-            const res = await fetch(`http://192.168.1.27:3000/api${endpoint}/${id}`,{
+            const res = await fetch(`${apiUrl}${endpoint}/${id}`,{
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json'

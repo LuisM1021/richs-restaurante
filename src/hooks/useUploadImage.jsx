@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+const apiUrl = import.meta.env.VITE_API_ENDPOINT
+
 export default function useUploadImage(){
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
@@ -11,7 +13,7 @@ export default function useUploadImage(){
         setLoading(true)
 
         try{
-            const res = await fetch(`http://192.168.1.25:3000/api/dishes/img/${id}`,{
+            const res = await fetch(`${apiUrl}/dishes/img/${id}`,{
                 method: 'POST',
                 body: formData
             })
