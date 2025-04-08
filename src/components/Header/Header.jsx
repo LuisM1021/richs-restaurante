@@ -3,6 +3,7 @@ import dishPlate from '../../assets/dish.svg'
 import orderBook from '../../assets/order-book.svg'
 
 import Logo from '../Logo'
+import { NavLink } from 'react-router-dom'
 
 
 export default function Header(){
@@ -14,17 +15,21 @@ export default function Header(){
             </div>
             <nav className="header__nav">
                 <ul className='nav__list'>
-                    <li className='list__item'>
-                        <p>Platos</p>
-                        <img src={dishPlate} alt="Platos" />
-                    </li>
+                    <NavLink to='/'>
+                        <li className='list__item'>
+                            <p>Platos</p>
+                            <img src={dishPlate} alt="Platos" />
+                        </li>
+                    </NavLink>
                     <li className='list__logo-item'>
                         <Logo isGreen={true} flexDirection={'row'} />
                     </li>
-                    <li className='list__item'>
-                        <p>Pedidos</p>
-                        <img src={orderBook} alt="Pedidos" />
-                    </li>
+                    <NavLink to='/orders'>
+                        <li className='list__item'>
+                            <p>Pedidos</p>
+                            <img src={orderBook} alt="Pedidos" />
+                        </li>
+                    </NavLink>
                 </ul>
             </nav>
         </div>

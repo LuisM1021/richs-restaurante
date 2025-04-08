@@ -38,6 +38,9 @@
                 align-items: center;
                 gap: 12px;
                 cursor: pointer;
+                &:hover img{
+                    transform: rotateY(180deg);
+                }
                 p{
                     font-size: $font-xl;
                     color: $white;
@@ -45,6 +48,7 @@
                 img{
                     width: 124px;
                     height: 124px;
+                    transition: transform 0.8s ease-out;
                 }
             }
             .list__logo-item{

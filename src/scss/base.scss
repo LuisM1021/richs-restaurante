@@ -7,3 +7,19 @@ p{
     font-size: $font-md;
     color: $black;
 }
+a{
+    text-decoration: none;
+}
+input, textarea{
+    font-size: $font-md;
+    padding: 4px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+}
+button{
+    border-radius: 4px;
+    padding: 4px;
+    border: none;
+    font-size: $font-md;
+}

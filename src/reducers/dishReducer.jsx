@@ -7,10 +7,33 @@ export default function dishReducer(state, action){
                 ...action.object
             }
         }
+        case 'changeName':
+            return {
+                ...state,
+                name: action.nextName
+            }
+        case 'changeDescription':
+            return {
+                ...state,
+                description: action.nextDescription
+            }
         case 'changeIsActive':
             return {
                 ...state,
                 isActive: action.nextIsActive
+            }
+        case 'changeCategory':
+            return {
+                ...state,
+                category: {
+                    ...state.category,
+                    id: action.nextCategoryId
+                }
+            }
+        case 'changePrice':
+            return {
+                ...state,
+                price: action.nextPrice
             }
         case 'changeImageUrl':
             return {

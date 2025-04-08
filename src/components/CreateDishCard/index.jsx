@@ -1,10 +1,10 @@
+import './CreateDishCard.scss'
 import useFetchData from '../../hooks/useFetchData';
 import EditTextButtons from '../EditTextButtons';
-import './EditDishCard.scss'
 
 import { useState } from 'react';
 
-export default function EditDishCard({ dish, onChangeDishState, onUploadImage, onChangeName, onChangeDescription, onChangeCategory, onChangePrice }){
+export default function EditDishCard({ dish, onChangeImage, onChangeName, onChangeDescription, onChangeCategory, onChangePrice, onCreateDish }){
     const { data: categories, error, loading } = useFetchData('/dishes/categories');
     const [file, setFile] = useState(null);
     const [showFileError, setShowFileError] = useState(false);
@@ -32,37 +32,38 @@ export default function EditDishCard({ dish, onChangeDishState, onUploadImage, o
         setFile(file)
     }
 
-    const handleUploadFile = async () => {
-        await onUploadImage(dish?.id, file)
+    const handleChangeImage = () => {
+        onChangeImage(file)
         setFile(null)
         setShowFileError(false)
     }
 
     const handleChangeName = () => {
         if(name !== ''){
-            onChangeName(dish?.id, name);
+            onChangeName(name);
         }
     }
     const handleChangeDescription = () => {
         if(description !== ''){
-            onChangeDescription(dish?.id, description);
+            onChangeDescription(description);
         }
     }
     const handleUpdatePrice = () => {
         if(price !== '' && !isNaN(parseFloat(price))){
-            onChangePrice(dish?.id, price);
+            onChangePrice(price);
         }
     }
     const handleChangePrice = (value) => {
-        if(isNaN(parseInt(value)) && value !== '.'){
-            setPrice(value)
-        }
-        return
+        // if(isNaN(parseInt(value)) && value !== '.'){
+        //     setPrice(value)
+        // }
+        // return
+        setPrice(value)
     }
 
     return(
-        <div className="edit-dish__card">
-            <div className={`edit__name ${enableEditName ? 'editing' : undefined}`}>
+        <div className="create-dish__card">
+            <div className={`create__name ${enableEditName ? 'editing' : undefined}`}>
                 { enableEditName ? 
                     <input type="text" placeholder={dish?.name} onChange={(e)=>setName(e.target.value)}/>
                     :
@@ -73,7 +74,7 @@ export default function EditDishCard({ dish, onChangeDishState, onUploadImage, o
                     setEnableEditName(false)
                 }}/>
             </div>
-            <div className="edit__description">
+            <div className="create__description">
                 <EditTextButtons enabledEdit={enableEditDescription} onEnableEdit={()=>setEnableEditDescription(true)} onCancelEdit={()=>setEnableEditDescription(false)} 
                 onSubmit={() => {
                     handleChangeDescription()
@@ -85,15 +86,22 @@ export default function EditDishCard({ dish, onChangeDishState, onUploadImage, o
                     <p>{dish?.description}</p>
                 }
             </div>
-            <div className="edit__category">
+            <div className="create__category">
                 <p className='category__label'>Categoría: </p>
-                <select value={dish?.category?.id} onChange={(e)=>onChangeCategory(e.target.value)}>
+                <select onChange={(e)=>{
+                    if(parseInt(e.target.value) === -1){
+                        onChangeCategory(null)
+                    }else{
+                        onChangeCategory(parseInt(e.target.value))
+                    }
+                }}>
+                    <option value={-1}>Select a category</option>
                     { categories?.map(category => (
                         <option key={category.id} value={category.id}>{category.name}</option>
                     ))}
                 </select>
             </div>
-            <div className="edit__price">
+            <div className="create__price">
                 <p className='price__label'>Precio:</p>
                 { enableEditPrice ? 
                     <input type="text" placeholder={dish?.price} onChange={(e)=>handleChangePrice(e.target.value)}/>
@@ -106,15 +114,17 @@ export default function EditDishCard({ dish, onChangeDishState, onUploadImage, o
                     setEnableEditPrice(false)
                 }}/>
             </div>
-            <div className="edit__file">
+            <div className="create__file">
                 <p className='file__label'>Imagen:</p>
                 <input type="file" accept='.svg' onChange={(e) => handleChangeFile(e)}/>
                 {showFileError && <p className="file__bad-source">Archivo no soportado</p> }
-                {file &&  <button onClick={handleUploadFile}>Cambiar imagen</button> }
+                {file &&  <button onClick={handleChangeImage}>Cambiar imagen</button> }
             </div>
-            <div className="edit__is-active">
-                <button className={dish?.isActive ? 'active': undefined} onClick={() => onChangeDishState(dish?.id, !dish?.isActive)}>
-                    {dish?.isActive ? 'Desactivar' : 'Activar'}
+            <div className="create__button">
+                <button className={dish?.category?.id ? undefined : 'disabled'}
+                 disabled={dish?.category?.id ? false : true}
+                 onClick={onCreateDish}>
+                    Crear
                 </button>
             </div>
         </div>

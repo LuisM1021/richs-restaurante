@@ -1,6 +1,6 @@
 @use '../../scss/variables/index' as *;
 
-.edit-dish__card{
+.create-dish__card{
     width: 100%;
     height: 100%;
     background: $green-2;
@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    .edit__name{
+    .create__name{
         height: 15%;
         display: flex;
         justify-content: center;
@@ -30,7 +30,7 @@
             }
         }
     }
-    .edit__description{
+    .create__description{
         height: 100%;
         width: 100%;
         display: flex;
@@ -53,7 +53,7 @@
             }
         }
     }
-    .edit__category{
+    .create__category{
         height: 10%;
         display: flex;
         align-items: center;
@@ -72,7 +72,7 @@
             outline: none;
         }
     }
-    .edit__price{
+    .create__price{
         height: 10%;
         display: flex;
         align-items: center;
@@ -99,7 +99,7 @@
             }
         }
     }
-    .edit__file{
+    .create__file{
         height: 20%;
         display: flex;
         flex-direction: column;
@@ -119,7 +119,7 @@
             cursor: pointer;
         }
     }
-    .edit__is-active{
+    .create__button{
         height: 100%;
         display: flex;
         justify-content: center;
@@ -132,8 +132,8 @@
             border: none;
             font-weight: bold;
             cursor: pointer;
-            &.active{
-                background: #E27F7F;
+            &.disabled{
+                opacity: 0.7;
             }
         }
     }

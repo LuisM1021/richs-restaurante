@@ -1,0 +1,16 @@
+@use '../../scss/variables/index' as *;
+
+.edit__buttons-container{
+    display: flex;
+    gap: 6px;
+    img{
+        width: 28px;
+        height: 28px;
+        cursor: pointer;
+        &:nth-child(2){
+            border-radius: 50%;
+            background: $light-blue;
+        }
+    }
+}
+

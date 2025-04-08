@@ -8,6 +8,7 @@ import usePatch from '../../hooks/usePatch';
 import dishReducer from '../../reducers/dishReducer';
 import useUploadImage from '../../hooks/useUploadImage';
 import useFetchData from '../../hooks/useFetchData';
+const apiUrl = import.meta.env.VITE_API_ENDPOINT
 
 export default function Dish(){
     
@@ -49,15 +50,64 @@ export default function Dish(){
         }
     }
 
+    const handleChangeDishName = async(id, newName) => {
+        const updatedDish = await patch('/dishes', id, {
+            name: newName
+        })
+        if(updatedDish){
+            dispatch({
+                type: 'changeName',
+                nextName: updatedDish.name
+            })
+        }
+        
+    }
+
+    const handleChangeDishDescription = async(id, newDescription) => {
+        const updatedDish = await patch('/dishes', id, {
+            description: newDescription
+        })
+        if(updatedDish){
+            dispatch({
+                type: 'changeDescription',
+                nextDescription: updatedDish.description
+            })
+        }
+    }
+
+    const handleChangeDishCategory = async(categoryId) => {
+        const updatedDish = await patch('/dishes', id, {
+            categoryId: categoryId
+        })
+        if(updatedDish){
+            dispatch({
+                type: 'changeCategory',
+                nextCategoryId: updatedDish.category.id
+            })
+        }
+    }
+
+    const handleChangeDishPrice = async(id, newPrice) => {
+        const updatedDish = await patch('/dishes', id, {
+            price: newPrice
+        })
+        if(updatedDish){
+            dispatch({
+                type: 'changePrice',
+                nextPrice: updatedDish.price
+            })
+        }
+    }
+
     return(
         <Layout>
             <div className="dish">
                 <div className="dish__card">
                     <p className="card__name">{dish?.name}</p>
-                    <img src={dish?.imageUrl ? `http://192.168.1.27:3000/api/dishes/img${dish.imageUrl}` : fakeImg} alt={dish?.name} />
+                    <img src={dish?.imageUrl ? `${apiUrl}/dishes/img${dish.imageUrl}` : fakeImg} alt={dish?.name} />
                     <p className="card__price">Q {parseFloat(dish?.price).toFixed(2)}</p>
                 </div>
-                <EditDishCard dish={dish} onChangeDishState={handleChangeIsActive} onUploadImage={handleUploadImage}/>
+                <EditDishCard dish={dish} onChangeDishState={handleChangeIsActive} onUploadImage={handleUploadImage} onChangeName={handleChangeDishName} onChangeDescription={handleChangeDishDescription} onChangeCategory={handleChangeDishCategory} onChangePrice={handleChangeDishPrice}/>
             </div>
         </Layout>
     )

@@ -4,6 +4,7 @@ $dish-list-gap-x: 12px;
 
 .dishes{
     width: 100%;
+    max-width: 1200px;
     height: 100%;
     display: flex;
     flex-direction: column;
