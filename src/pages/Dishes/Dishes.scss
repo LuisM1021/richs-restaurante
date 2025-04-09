@@ -18,6 +18,15 @@ $dish-list-gap-x: 12px;
         width: 100%;
         max-width: 400px;
         margin: 0 auto;
+        .dishes__create-btn{
+            width: 132px;
+            background: $green-2;
+            font-size: $font-md;
+            padding: 12px;
+            border-radius: 4px;
+            color: $black;
+            font-weight: bold;
+        }
     }
     .dishes-list{
         display: grid;

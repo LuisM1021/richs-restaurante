@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import SearchBar from '../../components/SearchBar/SearchBar';
 import AbcFilter from '../../components/AbcFilter/AbcFilter';
 import useFetchData from '../../hooks/useFetchData';
+import { NavLink } from 'react-router-dom';
 
 export default function Dishes(){
     
@@ -36,6 +37,7 @@ export default function Dishes(){
                 <div className="dishes__filter-options">
                     <AbcFilter onChange={(value)=>setAbcFilter(value)}/>
                     <SearchBar onChange={(text)=>setSearch(text)}/>
+                    <NavLink to='dish/create' className='dishes__create-btn'>Crear plato</NavLink>
                 </div>
 
                 <div className="dishes-list">

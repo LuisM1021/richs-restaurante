@@ -4,10 +4,17 @@ import useFetchData from '../../hooks/useFetchData'
 import OrderCard from '../../components/OrderCard'
 import StateFilter from '../../components/StateFilter'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import ModalCreateOrder from '../../components/ModalCreateOrder'
+import usePost from '../../hooks/usePost'
 
 export default function Orders(){
+
+    const navigate = useNavigate()
     const { data: orders, loading, error } = useFetchData('/orders')
     const [statesToFilter, setStatesToFilter] = useState([])
+    const [showCreateOrderModal, setShowCreateOrderModal] = useState(false)
+    const { post, error: errorPost, loading: loadingPost } = usePost()
 
     const filterOrders = () => {
         if(statesToFilter.length === 0){
@@ -34,10 +41,19 @@ export default function Orders(){
         setStatesToFilter([...statesToFilter, state])
     }
 
+    const handleCreateOrder = async (tableNumber) => {
+        const createdOrder = await post('/orders', {
+            tableNumber: tableNumber
+        })
+        if(createdOrder){
+            navigate(`/order/${createdOrder.id}`)
+        }
+    }
 
     return(
         <Layout>
             <div className="orders">
+                { showCreateOrderModal && <ModalCreateOrder onCloseModal={()=>setShowCreateOrderModal(false)} onConfirm={handleCreateOrder}/>}
                 <h1>{formattedDate}</h1>
                 <div className="options">
                     <button>Ver historial...</button>
@@ -46,6 +62,7 @@ export default function Orders(){
                         <StateFilter name={'PENDING'} onClick={handleFilterState}/>
                         <StateFilter name={'COMPLETED'} onClick={handleFilterState}/>
                     </div>
+                    <button className="orders__create-btn" onClick={() => setShowCreateOrderModal(true)}>Crear orden</button>
                 </div>
                 <div className="orders-list">
                     { filteredOrders?.map(order => (

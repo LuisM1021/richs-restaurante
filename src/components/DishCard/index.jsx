@@ -10,7 +10,9 @@ export default function DishCard({ dish }) {
             <div className="dish-card">
                 <figure className='dish-card__img-container'>
                     <p className={`dish-card__category cat_${dish.category.id}`}>{dish.category.name}</p>
-                    <img src={dish.imageUrl ? `${apiUrl}/dishes/img${dish.imageUrl}` : fakeImg} alt={dish.name} />
+                    <figure>
+                        <img src={dish.imageUrl ? `${apiUrl}/dishes/img${dish.imageUrl}` : fakeImg} alt={dish.name} />
+                    </figure>
                 </figure>
                 <p className='dish-card__dish-name'>{dish.name}</p>
                 <p className="dish-card__dish-price">Q {parseFloat(dish.price).toFixed(2)}</p>

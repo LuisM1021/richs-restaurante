@@ -32,21 +32,6 @@
         .modal__search-bar{
             height: 20%;
         }
-
-        // <div className="modal__dishes">
-        //             <button className='dishes__backward' onClick={()=>handleClick(5)}>-</button>
-        //             <button className='dishes__forward' onClick={()=>handleClick(1)}>+</button>
-        //             <ul className="dishes__carrousel" ref={dishRef}>
-        //                 {filteredDishes?.map((dish, i) => (
-        //                     <div className="modal__dish" key={i}>
-        //                         <p>{dish.name}</p>
-        //                         <figure>
-        //                             <img src={dish.imageUrl ? `${apiUrl}/dishes/img${dish.imageUrl}` : fakeImg} alt={dish.name} />
-        //                         </figure>
-        //                     </div>
-        //                 ))}
-        //             </ul>
-        //         </div>
         .modal__dishes{
             height: 40%;
             width: 100%;

@@ -31,7 +31,7 @@ export default function orderReducer(state, action){
         case 'addDish':
             return {
                 ...state,
-                dishes: [...state.dishes, action.newDish]
+                dishes: state.dishes ? [...state.dishes, action.newDish] : [action.newDish]
             }
         }
         throw new Error("Unhandled action type: ", action.type)
