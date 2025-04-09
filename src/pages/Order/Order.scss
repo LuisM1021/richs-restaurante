@@ -1,0 +1,76 @@
+@use '../../scss/variables/index' as *;
+
+.order{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 1024px;
+    display: flex;
+    flex-direction: column;
+    h1{
+        text-align: center;
+        margin-bottom: 48px;
+    }
+    .order__details{
+        margin-bottom: 24px;
+        p{
+            margin-bottom: 8px;
+            span{
+                font-weight: bold;
+            }
+            select{
+                background: $dark-blue;
+                padding: 4px;
+                color: $white;
+                font-weight: bold;
+                border-radius: 4px;
+                outline: none;
+            }
+        }
+    }
+    .order__dishes-container{
+        width: 100%;
+        > p{
+            font-weight: bold;
+            font-size: $font-xl;
+            margin-bottom: 24px;
+        }
+        .dishes-header{
+            width: 100%;
+            display: grid;
+            grid-template-columns: 40% 15% 25% 20%;
+            font-weight: bold;
+            justify-items: center;
+            margin-bottom: 12px;
+        }
+        .line{
+            width: 100%;
+            height: 2px;
+            background-color: $black;
+            margin-bottom: 12px;
+            border-radius: 50%;
+        }
+        .dishes__add{
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 24px;
+            margin-bottom: 12px;
+            cursor: pointer;
+        }
+        .dishes__total{
+            display: flex;
+            gap: 32px;
+            justify-content: flex-end;
+            padding-right: 24px;
+            p{
+                font-size: $font-lg;
+                font-weight: bold;
+                &:nth-child(2){
+                    color: $dark-blue;
+                }
+            }
+        }
+        
+    }
+}

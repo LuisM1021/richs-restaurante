@@ -1,0 +1,50 @@
+@use '../../scss/variables/index' as *;
+
+.order-dish__item{
+    width: 100%;
+    height: 200px;
+    display: grid;
+    grid-template-columns: 40% 15% 25% 20%;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 12px;
+    .item__card{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        div{
+            height: 20%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            p{
+                text-align: center;
+                width: 65%;
+                font-weight: bold;
+            }
+            button{
+                font-weight: bold;
+                background: #E27F7F;
+                color: $white;
+                padding: 8px;
+                cursor: pointer;
+                &:hover{
+                    background: #dc6262;
+                }
+            }
+        }
+        img{
+            width: 65%;
+            height: 80%;
+        }
+    }
+    .item__quantity{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        button{
+            background: none;
+            cursor: pointer;
+        }
+    }
+}
