@@ -8,6 +8,7 @@ import OrderDishItem from '../../components/OrderDishItem';
 import add from '../../assets/add.svg'
 import usePatch from '../../hooks/usePatch'
 import useDelete from '../../hooks/useDelete';
+import usePost from '../../hooks/usePost'
 import ModalAddDish from '../../components/ModalAddDish';
 
 export default function Order(){
@@ -18,6 +19,7 @@ export default function Order(){
     const [order, dispatch] = useReducer(orderReducer, null)
     const { patch, error: patchError, loading: patchLoading } = usePatch()
     const { deleteRequest, error: deleteError, loading: loadingError } = useDelete()
+    const { post, error: postError, loading: postLoading} = usePost()
     const [showAddDishModal, setShowAddDishModal] = useState(false)
 
     useEffect(()=>{
@@ -85,9 +87,28 @@ export default function Order(){
         }
     }
 
+    const handleAddDish = async (dishId) => {
+        const addedDish = await post(`/orders/${order.id}/dishes`, {
+            dishId: dishId
+        })
+        if(addedDish){
+            dispatch({
+                type: 'addDish',
+                newDish: {
+                    dishId: addedDish.id,
+                    name: addedDish.name,
+                    price: addedDish.price,
+                    isActive: addedDish.isActive,
+                    categoryId: addedDish.categoryId,
+                    imageUrl: addedDish.imageUrl,
+                    quantity: addedDish.quantity
+                }
+            })
+        }
+    }
     return(
         <Layout>
-            { showAddDishModal && <ModalAddDish onCloseModal={()=>setShowAddDishModal(false)}/>}
+            { showAddDishModal && <ModalAddDish onCloseModal={()=>setShowAddDishModal(false)} onConfirm={handleAddDish}/>}
             <div className="order">
                 <h1>Orden No. {order?.id}</h1>
                 <div className="order__details">

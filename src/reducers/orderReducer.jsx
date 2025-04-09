@@ -28,6 +28,11 @@ export default function orderReducer(state, action){
                 ...state,
                 dishes: state.dishes.filter(dish => dish.dishId !== action.dishId)
             }
+        case 'addDish':
+            return {
+                ...state,
+                dishes: [...state.dishes, action.newDish]
+            }
         }
         throw new Error("Unhandled action type: ", action.type)
 }
