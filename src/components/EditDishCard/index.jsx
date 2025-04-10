@@ -49,15 +49,15 @@ export default function EditDishCard({ dish, onChangeDishState, onUploadImage, o
         }
     }
     const handleUpdatePrice = () => {
-        if(price !== '' && !isNaN(parseFloat(price))){
-            onChangePrice(dish?.id, price);
-        }
+        onChangePrice(dish?.id, price);
+        // if(price !== '' && !isNaN(parseFloat(price))){
+        // }
     }
     const handleChangePrice = (value) => {
-        if(isNaN(parseInt(value)) && value !== '.'){
+        // if(isNaN(parseInt(value)) && value !== '.'){
             setPrice(value)
-        }
-        return
+        // }
+        // return
     }
 
     return(

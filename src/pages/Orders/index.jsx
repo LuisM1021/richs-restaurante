@@ -54,7 +54,7 @@ export default function Orders(){
         <Layout>
             <div className="orders">
                 { showCreateOrderModal && <ModalCreateOrder onCloseModal={()=>setShowCreateOrderModal(false)} onConfirm={handleCreateOrder}/>}
-                <h1>{formattedDate}</h1>
+                {/* <h1>{formattedDate}</h1> */}
                 <div className="options">
                     <button>Ver historial...</button>
                     <div className='filters'>
